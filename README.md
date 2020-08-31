@@ -7,6 +7,7 @@ from web3 import Web3
 web3 = Web3(Web3.HTTPProvider(ETHEREUM_NODE_URL))
 
 # simple price
+from pyvetherpools import get_price
 print('ETH/VETH price: {} VETH'.format(get_price(web3, "ETH")))
 
 # accurate price (using a given swap amount)
