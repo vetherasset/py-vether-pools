@@ -23,8 +23,8 @@ print(f'ETH/VETH Pool Volume in the last 24 hours: {other_volume} Ether and {vet
 
 # account liquidity balances
 from pyvetherpools import get_pooled_balance_for_address
-veth_balance, other_balance = get_pooled_balance_for_address(web3, "0x4Ba6dDd7b89ed838FEd25d208D4f644106E34279")
-print('Account has pooled {other_balance} Ether and {veth_balance} Vether'.format(get_exchange_address_for_pair("ETH")))
+veth_balance, other_balance = get_pooled_balance_for_address(web3, "0x4Ba6dDd7b89ed838FEd25d208D4f644106E34279", "ETH")
+print(f'Account has pooled {other_balance} Ether and {veth_balance} Vether in ETH/VETH pool')
 
 # pool liquidity balances
 from pyvetherpools import get_reserves
