@@ -83,7 +83,7 @@ def get_price(web3, currency_symbol):
             currency_address,
             web3.toWei(1, 'ether')).call(),
         'ether')
-    return price
+    return 1 / float(price)
 
 
 def get_reserves(web3, currency_symbol):
@@ -103,7 +103,7 @@ def get_veth_to_token_swap_amount(web3, currency_symbol, amount):
             web3.toWei(pool_veth_balance, 'ether'),
             web3.toWei(pool_token_balance, 'ether')),
         'ether')
-    return value_in_token
+    return float(value_in_token)
 
 
 def get_token_to_veth_swap_amount(web3, currency_symbol, amount):
@@ -115,7 +115,7 @@ def get_token_to_veth_swap_amount(web3, currency_symbol, amount):
             web3.toWei(pool_token_balance, 'ether'),
             web3.toWei(pool_veth_balance, 'ether')),
         'ether')
-    return value_in_veth
+    return float(value_in_veth)
 
 
 def get_pooled_balance_for_address(web3, currency_symbol, address):
@@ -163,11 +163,11 @@ def get_volume(web3, currency_symbol=None, num_hours=24):
                 print('bad swap transaction {}'.format(web3.toHex(event['transactionHash'])))
                 continue
 
-            inputAmount = correct_log.args.inputAmount
-            outputAmount = correct_log.args.outputAmount
+            inputAmount = float(correct_log.args.inputAmount)
+            outputAmount = float(correct_log.args.outputAmount)
             tokenFrom = correct_log.args.tokenFrom
             tokenTo = correct_log.args.tokenTo
-            # fee = correct_log.args.fee
+            # fee = float(correct_log.args.fee)
 
             # check if we are filtering by a particular pair
             if currency_address:
